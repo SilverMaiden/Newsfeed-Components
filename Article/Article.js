@@ -85,7 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Woot woot working code',
+    date: 'Oct 2nd, 2019',
+    firstParagraph: `whoooooaooaoaa what a random article look at me!! I can use DOM manipulation to create componenets YAY`,
+
+    secondParagraph: `At first it wasn't working, but that was because of a silly mistake I made with the syntax of blah.classList.add.`,
+
+    thirdParagraph: `That's it for today, folks!`
   }
+
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below:
@@ -108,28 +118,37 @@ function articleCreator(object) {
 
     //Creating the div and adding classes.
     const myDiv = document.createElement('div');
-    myDiv.classList.add = ('article');
+    myDiv.classList.add('article');
 
     //Creating the header, which has no class, and adding text content.
-    let myHeader = document.createElement('h2');
+    const myHeader = document.createElement('h2');
     myHeader.textContent= object.title;
 
     //Creating the paragraph for the date of article.
 
-    let date = document.createElement('p');
+    const date = document.createElement('p');
     date.classList.add = ('date');
     date.textContent = object.date;
 
     //Creating the three paragraphs which will contain texts.
-    let myParagraph1 = document.createElement('p');
-    let myParagraph2 = document.createElement('p');
-    let myParagraph3 = document.createElement('p');
+    const myParagraph1 = document.createElement('p');
+    const myParagraph2 = document.createElement('p');
+    const myParagraph3 = document.createElement('p');
 
 
     //Adding text content to each of the paragraphs, pulling the data from the objects respective attribute.
     myParagraph1.textContent = object.firstParagraph;
     myParagraph2.textContent = object.secondParagraph;
     myParagraph3.textContent = object.thirdParagraph;
+
+    const mySpan = document.createElement('span');
+    mySpan.classList.add('expandButton');
+    mySpan.textContent=('Click Me!');
+
+    //Adding event listener to span
+    mySpan.addEventListener('click', (event) => {
+        myDiv.classList.toggle('article-open');
+    })
 
     //Appending it all to the myDiv
 
@@ -138,6 +157,7 @@ function articleCreator(object) {
     myDiv.appendChild(myParagraph1);
     myDiv.appendChild(myParagraph2);
     myDiv.appendChild(myParagraph3);
+    myDiv.appendChild(mySpan);
 
     return myDiv;
 
@@ -152,9 +172,12 @@ data.forEach((article) => {
 
 })
 
-/*
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+//  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+
+
+/*
 
   Step 3: return the entire component.
 
