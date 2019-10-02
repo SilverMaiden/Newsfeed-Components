@@ -9,7 +9,42 @@ let menuItems = [
   'Log Out'
 ];
 
-/* 
+
+
+function menuCreator(array) {
+    //Creating div, adding class of menu
+    const myDiv = document.createElement('div')
+    myDiv.classList.add('menu');
+
+    //Creating unordered list
+    let myUl = document.createElement('ul');
+
+
+    //Going through the input array, and turning each element into a list item before appending it to myUL.
+    array.forEach(function(element) {
+        let myElement = document.createElement('li')
+        myElement.textContent=(element);
+        myUl.appendChild(myElement)
+
+    });
+
+    let myButton = document.querySelector('.menu-button');
+    myButton.addEventListener('click', (event) => {
+        myDiv.classList.toggle('menu--open')
+    })
+
+    myDiv.appendChild(myUl);
+
+    return myDiv;
+}
+
+console.log(menuCreator(menuItems));
+
+let header=document.querySelector('.header');
+header.appendChild(menuCreator(menuItems));
+
+
+/*
 
   Step 1: Write a function that will create a menu component as seen below:
 
@@ -21,7 +56,7 @@ let menuItems = [
 
   The function takes an array as its only argument.
 
-  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
+  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array.
   Add those items to the <ul>
 
   Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
@@ -31,5 +66,5 @@ let menuItems = [
   Step 5: return the menu component.
 
   Step 6: add the menu component to the DOM.
-  
+
 */
