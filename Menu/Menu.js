@@ -21,7 +21,7 @@ function menuCreator(array) {
 
 
     //Going through the input array, and turning each element into a list item before appending it to myUL.
-    array.forEach(function(element) {
+    array.map((element) => {
         let myElement = document.createElement('li')
         myElement.textContent=(element);
         myUl.appendChild(myElement)

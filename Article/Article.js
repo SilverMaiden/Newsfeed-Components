@@ -165,7 +165,7 @@ function articleCreator(object) {
 
 let articles = document.querySelector('.articles')
 
-data.forEach((article) => {
+data.map((article) => {
     let newArticle = articleCreator(article);
     console.log(newArticle);
     articles.appendChild(newArticle);
